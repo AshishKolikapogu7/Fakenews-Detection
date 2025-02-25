@@ -42,11 +42,17 @@ Once the model was trained, it was integrated into a Flask web application.
 1️⃣ Flask App Structure
 
 📂 fake_news_app/
+
  ├── 📂 model/
+ 
  │   ├── fake_news_model.pkl
+ 
  │   ├── vectorizer.pkl
+ 
  ├── 📂 templates/
+ 
  │   ├── index.html
+ 
  ├── app.py
 
 2️⃣ Flask App Implementation
