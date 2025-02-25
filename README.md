@@ -20,9 +20,12 @@ Model Training (Jupyter Notebook)
 3️⃣ Model Selection & Training
 The dataset was split into 80% training and 20% testing, and the following machine learning models were trained:
 
-Logistic Regression - 98%
+{Logistic Regression - 98%}
+
 DecisionTreeClassifier - 99%
+
 Random Forest Classifier - 98%
+
 GradientBoostingClassifier - 99%
 
 
