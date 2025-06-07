@@ -1,11 +1,11 @@
 from flask import Flask, render_template, request
 import joblib
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates', static_folder='static')
 
 # Load the trained model and vectorizer
-model = joblib.load(r"C:\\Users\\ADMIN\\Desktop\\fake_news_app\\model\\fake_news_model.pkl")
-vectorizer = joblib.load("C:\\Users\ADMIN\\Desktop\\fake_news_app\\model\\vectorizer.pkl")
+model = joblib.load("fake_news_model.pkl")
+vectorizer = joblib.load("vectorizer.pkl")
 
 @app.route("/", methods=["GET", "POST"])
 def index():

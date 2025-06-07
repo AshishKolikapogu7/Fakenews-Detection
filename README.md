@@ -1,73 +1,68 @@
-The project consists of two major phases:
+# Fake News Detection
 
-->Training the Model 🏋️‍♂️ in Jupyter Notebook using NLP techniques.
-->Deploying the Model 🚀 as a Flask web application for real-time predictions.
-📂 Dataset
-True.csv – Contains genuine news articles, Real News → 1
-Fake.csv – Contains misleading or fake news articles, Fake News → 0.
+This project is a Flask web application that uses a machine learning model to detect fake news. The model is trained on a dataset of real and fake news articles and can classify new articles as either "Real News" or "Fake News".
 
-Model Training (Jupyter Notebook)
-1️⃣ Data Preprocessing
-✔️ Combined True.csv and Fake.csv into a single dataset.
-✔️ Removed missing values and cleaned text data.
-✔️ Converted all text to lowercase.
-✔️ Removed punctuations, stopwords, and performed tokenization.
+## Project Structure
 
-2️⃣ Feature Engineering
-✔️ Used TF-IDF Vectorization (TfidfVectorizer from sklearn) to convert text into numerical form.
-✔️ Limited vocabulary size to remove noise and improve efficiency.
+```
+Fakenews-Detection/
+├── static/
+│   └── style.css
+├── templates/
+│   └── index.html
+├── app.py
+├── fake_news_model.pkl
+├── vectorizer.pkl
+└── README.md
+```
 
-3️⃣ Model Selection & Training
-The dataset was split into 80% training and 20% testing, and the following machine learning models were trained:
+## How to Run
 
-{Logistic Regression - 98%}
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/AshishKolikapogu7/Fakenews-Detection.git
+    cd Fakenews-Detection
+    ```
 
-DecisionTreeClassifier - 99%
+2.  **Install the dependencies:**
+    It is recommended to use a virtual environment.
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-Random Forest Classifier - 98%
+3.  **Run the Flask application:**
+    ```bash
+    python app.py
+    ```
 
-GradientBoostingClassifier - 99%
+4.  **Open your browser** and navigate to `http://127.0.0.1:5000/`.
 
+## Dependencies
 
-4️⃣ Model Saving
-After evaluation, the best model and the vectorizer were saved using joblib:
+The required Python libraries are listed in the `requirements.txt` file.
+- Flask
+- scikit-learn
+- joblib
 
-{import joblib
-joblib.dump(model, 'fake_news_model.pkl')
-joblib.dump(vectorizer, 'vectorizer.pkl')}{}
+## Model Training
 
-🌐 Deploying with Flask
-Once the model was trained, it was integrated into a Flask web application.
+The model was trained using a Jupyter Notebook with the following steps:
 
-1️⃣ Flask App Structure
+### 1. Data Preprocessing
+- Combined `True.csv` and `Fake.csv` into a single dataset.
+- Cleaned the text data by removing missing values, converting to lowercase, and removing punctuation and stopwords.
 
-📂 fake_news_app/
+### 2. Feature Engineering
+- Used TF-IDF Vectorization (`TfidfVectorizer` from scikit-learn) to convert the text data into numerical features.
 
- ├── 📂 model/
- 
- │   ├── fake_news_model.pkl
- 
- │   ├── vectorizer.pkl
- 
- ├── 📂 templates/
- 
- │   ├── index.html
- 
- ├── app.py
+### 3. Model Selection & Training
+The following models were trained and evaluated:
+- **Logistic Regression:** 98% accuracy
+- **Decision Tree Classifier:** 99% accuracy
+- **Random Forest Classifier:** 98% accuracy
+- **Gradient Boosting Classifier:** 99% accuracy
 
-2️⃣ Flask App Implementation
-The Flask app loads the trained model and vectorizer, processes user input, and returns predictions.
+The best performing model and the TF-IDF vectorizer were saved using `joblib`.
 
-User enters news text on the web UI.
-The model predicts whether it's "Fake" or "Real."
-The result is displayed on the page.
-✨ Final Thoughts
-This Fake News Detection App is a practical application of Natural Language Processing (NLP) and Machine Learning to combat misinformation. It can be expanded with advanced AI models for greater accuracy.
-
-
-
-
-
-
-
-
+## Deployment
+The trained model is deployed as a Flask web application. The application provides a simple user interface to enter a news article, and it will predict whether the news is real or fake.
